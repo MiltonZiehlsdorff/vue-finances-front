@@ -8,7 +8,7 @@ import dashboardRoutes from '@/modules/dashboard/router'
 
 Vue.use(Router)
 
-console.log('passando pelo router')
+console.log('passando pelo router-1')
 
 const router = new Router({
   mode: 'history',
@@ -19,6 +19,8 @@ const router = new Router({
     { path: '', redirect: '/login' }
   ]
 })
+
+/* console.log('passando pelo router-2-path: ', path) */
 
 router.beforeEach(async (to, from, next) => {
   if (to.matched.some(route => route.meta.requiresAuth)) {

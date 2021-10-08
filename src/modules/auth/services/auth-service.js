@@ -4,11 +4,12 @@ import SignUpMutation from './../graphql/SignUp.gql'
 import UserQuery from './../graphql/User.gql'
 
 const login = async variables => {
-  console.log('auth-service-1')
+  console.log('auth-service-1---variables: ', variables)
   const response = await apollo.mutate({
     mutation: LoginMutation,
     variables
   })
+  console.log('auth-service-1aaaaa')
   const { login } = response.data
   console.log('auth-service-2')
   await onLogin(apollo, login.token)

@@ -9,6 +9,7 @@ const errorHandler = (err, vm, info) => {
     })
   }
 }
+/* console.log('passando pelo Utils-path: ', path) */
 
 const formatError = message => {
   const messageSplit = message.split(':')

@@ -10,5 +10,5 @@
 export default {
   name: 'App'
 }
+
 </script>
-// comentario de teste
