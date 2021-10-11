@@ -134,11 +134,7 @@ export default {
       { description: 'Receita', value: 'CREDIT' },
       { description: 'Despesa', value: 'DEBIT' }
     ],
-    localFilters: {
-      accountsId: [],
-      categoriesId: [],
-      type: undefined
-    },
+    localFilters: udefined,
     showFilterDialog: false,
     subscriptions: []
   }),
@@ -150,6 +146,7 @@ export default {
   },
   created () {
     this.setItems()
+    this.resetFilters()
     console.log('created')
   },
   destroyer () {
@@ -159,9 +156,23 @@ export default {
     ...mapActions(['setFilters']),
     filter (type) {
       this.showFilterDialog = false
-      this.setFilters({ filters: type !== 'clear' ? this.localFilters : undefined })
+      let filters
+			if (type !== 'clear') {
+				filters = this.localFilters
+			} else {
+			  filters = undefined
+        this.resetFilters()
+			}
+      this.setFilters({ filters })
       this.$emit('filter')
       console.log('methods-filter')
+    },
+		resetFilters(){
+			this.localFilters = Object.assign({}, {
+			accountsIds: [],
+			categoriesIds: [],
+			type: undefined
+			})
     },
     setItems () {
       console.log('setitems')
